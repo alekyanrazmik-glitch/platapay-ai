@@ -6,13 +6,18 @@ Accepted
 
 ## Context
 
-PlataPay AI OS needs a concrete business core before implementation starts. If the team immediately writes a Telegram bot or API handlers, pricing rules, order states, customer communication behavior, and operator handoff details will likely become scattered across bots, handlers, prompts, and integrations.
+PlataPay AI OS needs a concrete business core before implementation starts. If the team
+immediately writes a Telegram bot or API handlers, pricing rules, order states, customer
+communication behavior, and operator handoff details will likely become scattered across
+bots, handlers, prompts, and integrations.
 
-That would make the platform harder to scale, test, audit, and reuse across future channels.
+That would make the platform harder to scale, test, audit, and reuse across future
+channels.
 
 ## Decision
 
-Before implementing Telegram, API, payment execution, or external integrations, document the business core of PlataPay AI OS:
+Before implementing Telegram, API, payment execution, or external integrations, document
+the business core of PlataPay AI OS:
 
 - product vision and agent constitution;
 - Sales Agent behavior;

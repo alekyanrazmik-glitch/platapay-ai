@@ -1,6 +1,7 @@
 # Pricing Policy
 
-This document defines the internal pricing policy for PlataPay AI OS. The detailed formula is internal and must not be shown to customers.
+This document defines the internal pricing policy for PlataPay AI OS. The detailed
+formula is internal and must not be shown to customers.
 
 ## Internal Formula
 
@@ -10,11 +11,14 @@ The Pricing Engine calculates the final customer price as follows:
 2. **Subscription cost** = service price in foreign currency × internal exchange rate.
 3. **Operational expense** = 250 RUB.
 4. **PlataPay commission** = 30% of subscription cost, with a minimum of 500 RUB.
-5. **Final customer price** = subscription cost + operational expense + PlataPay commission.
+5. **Final customer price** = subscription cost + operational expense + PlataPay
+   commission.
 
 ## Customer-Facing Rule
 
-Customers see only the final customer price. The agent must not disclose the internal formula, individual components, internal exchange rate, commission percentage, margin, or operational expense.
+Customers see only the final customer price. The agent must not disclose the internal
+formula, individual components, internal exchange rate, commission percentage, margin,
+or operational expense.
 
 ## Example Customer Response When Price Is Known
 
@@ -28,7 +32,8 @@ Customers see only the final customer price. The agent must not disclose the int
 
 Use this response:
 
-> В стоимость уже включены расходы на проведение международного платежа и обслуживание. Дополнительных платежей после оформления не будет.
+> В стоимость уже включены расходы на проведение международного платежа и
+> обслуживание. Дополнительных платежей после оформления не будет.
 
 ## Never Disclose to Customers
 
@@ -41,4 +46,6 @@ Use this response:
 
 ## Rounding
 
-The future implementation should define a consistent rounding rule before production use. Until then, examples in documentation are illustrative and must not be treated as executable pricing logic.
+The future implementation should define a consistent rounding rule before production
+use. Until then, examples in documentation are illustrative and must not be treated as
+executable pricing logic.

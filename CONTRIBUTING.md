@@ -1,6 +1,8 @@
 # Contributing to PlataPay AI
 
-Thank you for helping build PlataPay AI as a production-grade platform. This repository is expected to grow into multiple services and packages, so contributions should preserve clear boundaries and strong documentation.
+Thank you for helping build PlataPay AI as a production-grade platform. This repository
+is expected to grow into multiple services and packages, so contributions should
+preserve clear boundaries and strong documentation.
 
 ## Contribution Principles
 
@@ -13,9 +15,11 @@ Thank you for helping build PlataPay AI as a production-grade platform. This rep
 ## Development Workflow
 
 1. Create or update an issue describing the problem and expected outcome.
-2. For architectural changes, add an ADR in `docs/adr/` using the existing ADR format.
+2. For architectural changes, add an ADR in `docs/adr/` using the existing ADR
+   format.
 3. Keep changes focused and avoid mixing unrelated refactors.
-4. Add or update documentation when behavior, structure, or operational assumptions change.
+4. Add or update documentation when behavior, structure, or operational assumptions
+   change.
 5. Run available checks before opening a pull request.
 
 ## Pull Request Checklist

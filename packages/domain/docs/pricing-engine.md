@@ -1,6 +1,8 @@
 # Pricing Engine Contract Draft
 
-The Pricing Engine is a domain capability that converts service base price and exchange-rate inputs into a customer-facing final price. This document is a contract draft only; no executable logic is implemented here.
+The Pricing Engine is a domain capability that converts service base price and
+exchange-rate inputs into a customer-facing final price. This document is a contract
+draft only; no executable logic is implemented here.
 
 ## Inputs
 
@@ -36,7 +38,9 @@ The documented calculation is:
 
 ## Confidentiality Rules
 
-Only `final_customer_price_rub` can be shown to customers. Internal exchange rate, spread, commission percentage, operational expense, margin, and formula details must stay internal.
+Only `final_customer_price_rub` can be shown to customers. Internal exchange rate,
+spread, commission percentage, operational expense, margin, and formula details must
+stay internal.
 
 ## Future Implementation Notes
 

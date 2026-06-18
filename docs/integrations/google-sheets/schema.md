@@ -1,6 +1,7 @@
 # Google Sheets Schema Draft
 
-This schema describes a low-code operational data model for the first PlataPay AI OS iteration. It is documentation only and does not connect to Google Sheets.
+This schema describes a low-code operational data model for the first PlataPay AI OS
+iteration. It is documentation only and does not connect to Google Sheets.
 
 ## Services
 
@@ -13,7 +14,8 @@ This schema describes a low-code operational data model for the first PlataPay A
 | active | boolean | Yes | true |
 | notes | string | No | Prefer payment link |
 
-Example row: `svc_chatgpt_plus | ChatGPT Plus | AI assistant | USD | true | Prefer official checkout link`.
+Example row: `svc_chatgpt_plus | ChatGPT Plus | AI assistant | USD | true | Prefer
+official checkout link`.
 
 ## Pricing
 
@@ -29,7 +31,8 @@ Example row: `svc_chatgpt_plus | ChatGPT Plus | AI assistant | USD | true | Pref
 | minimum_commission_rub | number | Yes | 500 |
 | active | boolean | Yes | true |
 
-Example row: `price_chatgpt_plus_monthly | svc_chatgpt_plus | Plus monthly | 20 | USD | 250 | 30 | 500 | true`.
+Example row: `price_chatgpt_plus_monthly | svc_chatgpt_plus | Plus monthly | 20 | USD |
+250 | 30 | 500 | true`.
 
 ## ExchangeRates
 
@@ -64,7 +67,9 @@ Example row: `USD | 95 | 10 | 105 | manual | 2026-06-18T10:00:00Z`.
 | created_at | datetime | Yes | 2026-06-18T10:05:00Z |
 | updated_at | datetime | Yes | 2026-06-18T10:10:00Z |
 
-Example row: `ord_20260618_0001 | Quoted | svc_chatgpt_plus | Plus monthly | USD | 20 | 2600 | payment_link |  | Unknown | @customer |  |  | 2026-06-18T10:05:00Z | 2026-06-18T10:10:00Z`.
+Example row: `ord_20260618_0001 | Quoted | svc_chatgpt_plus | Plus monthly | USD | 20 |
+2600 | payment_link |  | Unknown | @customer |  |  | 2026-06-18T10:05:00Z |
+2026-06-18T10:10:00Z`.
 
 ## Knowledge
 
@@ -77,7 +82,8 @@ Example row: `ord_20260618_0001 | Quoted | svc_chatgpt_plus | Plus monthly | USD
 | active | boolean | Yes | true |
 | updated_at | datetime | Yes | 2026-06-18T10:00:00Z |
 
-Example row: `kb_chatgpt_payment_link | svc_chatgpt_plus | payment link instructions | Ask customer for official checkout link. | true | 2026-06-18T10:00:00Z`.
+Example row: `kb_chatgpt_payment_link | svc_chatgpt_plus | payment link instructions |
+Ask customer for official checkout link. | true | 2026-06-18T10:00:00Z`.
 
 ## Operators
 
@@ -105,4 +111,5 @@ Example row: `op_001 | Operator 1 | payments_operator | true | internal_chat_id`
 | after | json/text | No | {"status":"Quoted"} |
 | created_at | datetime | Yes | 2026-06-18T10:10:00Z |
 
-Example row: `audit_0001 | agent | sales_agent | order | ord_20260618_0001 | status_changed | {"status":"New"} | {"status":"Quoted"} | 2026-06-18T10:10:00Z`.
+Example row: `audit_0001 | agent | sales_agent | order | ord_20260618_0001 |
+status_changed | {"status":"New"} | {"status":"Quoted"} | 2026-06-18T10:10:00Z`.

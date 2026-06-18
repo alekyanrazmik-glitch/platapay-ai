@@ -6,8 +6,15 @@ This directory contains long-lived documentation for PlataPay AI.
 
 - `adr/`: Architecture Decision Records that explain important technical choices.
 - `architecture/`: system diagrams, service boundaries, and future deployment views.
+- `product/`: PlataPay AI OS business core, including Sales Agent behavior, pricing,
+  order lifecycle, service catalog, customer communication, and operator handoff.
+- `integrations/google-sheets/`: draft Google Sheets schema for low-code
+  operational storage used by services, pricing, orders, knowledge, operators,
+  exchange rates, and audit logs.
 - `security/`: security assumptions, threat models, access controls, and compliance notes.
 
 ## How to Use This Directory
 
-Use repository documentation to make platform decisions reviewable before implementation begins. Short explanations can live in the root `README.md`, while durable architecture and operational details should live here.
+Use repository documentation to make platform decisions reviewable before implementation
+begins. Short explanations can live in the root `README.md`, while durable architecture
+and operational details should live here.

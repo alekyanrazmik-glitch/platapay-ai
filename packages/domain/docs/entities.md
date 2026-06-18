@@ -1,6 +1,7 @@
 # Domain Entities Draft
 
-This document defines documentation-only domain entities for the first PlataPay AI OS business core. These are contracts, not implementation code.
+This document defines documentation-only domain entities for the first PlataPay AI OS
+business core. These are contracts, not implementation code.
 
 ## Service
 

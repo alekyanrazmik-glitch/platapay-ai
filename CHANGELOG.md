@@ -2,7 +2,9 @@
 
 All notable changes to PlataPay AI will be documented in this file.
 
-This project follows the spirit of [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and will use semantic versioning once release artifacts are introduced.
+This project follows the spirit of [Keep a
+Changelog](https://keepachangelog.com/en/1.1.0/) and will use semantic versioning once
+release artifacts are introduced.
 
 ## [Unreleased]
 

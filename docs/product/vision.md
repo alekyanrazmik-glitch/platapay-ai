@@ -1,6 +1,8 @@
 # PlataPay AI OS Product Vision
 
-PlataPay AI OS is the business operating layer for helping customers request payment support for foreign digital services. The first platform capability is a Sales Agent connected to a Pricing Engine and an Orders workflow.
+PlataPay AI OS is the business operating layer for helping customers request payment
+support for foreign digital services. The first platform capability is a Sales Agent
+connected to a Pricing Engine and an Orders workflow.
 
 ## Product Goal
 
@@ -14,7 +16,8 @@ Create a controlled AI-assisted intake experience that can:
 
 ## First Business Capability
 
-The first capability is not a Telegram bot. It is a reusable business core that can later be used by Telegram, web chat, API, CRM, or operator tools.
+The first capability is not a Telegram bot. It is a reusable business core that can
+later be used by Telegram, web chat, API, CRM, or operator tools.
 
 ```mermaid
 flowchart LR

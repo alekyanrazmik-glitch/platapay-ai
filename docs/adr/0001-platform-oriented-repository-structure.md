@@ -6,11 +6,15 @@ Accepted
 
 ## Context
 
-PlataPay AI must become an AI platform that can support multiple user channels, AI workflows, integrations, and deployment models. A repository structured only around a Telegram bot would make the first channel the center of the system and would encourage business logic to leak into bot handlers.
+PlataPay AI must become an AI platform that can support multiple user channels, AI
+workflows, integrations, and deployment models. A repository structured only around a
+Telegram bot would make the first channel the center of the system and would encourage
+business logic to leak into bot handlers.
 
 ## Decision
 
-Organize the repository around deployable applications, reusable platform packages, infrastructure assets, and documentation:
+Organize the repository around deployable applications, reusable platform packages,
+infrastructure assets, and documentation:
 
 - `apps/` for deployable entrypoints;
 - `packages/` for reusable domain, AI orchestration, integration, and shared modules;

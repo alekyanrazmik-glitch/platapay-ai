@@ -1,6 +1,8 @@
 # Sales Agent Behavior
 
-The Sales Agent is the first AI agent in PlataPay AI OS. It handles customer intake, identifies service and plan, requests safe payment artifacts, asks the Pricing Engine for a quote, and prepares orders for operators.
+The Sales Agent is the first AI agent in PlataPay AI OS. It handles customer intake,
+identifies service and plan, requests safe payment artifacts, asks the Pricing Engine
+for a quote, and prepares orders for operators.
 
 ## Responsibilities
 

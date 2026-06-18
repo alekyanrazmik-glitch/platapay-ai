@@ -1,6 +1,7 @@
 # Operator Handoff
 
-The Sales Agent must produce a structured handoff when a request is ready for operator processing.
+The Sales Agent must produce a structured handoff when a request is ready for operator
+processing.
 
 ## Handoff Format
 

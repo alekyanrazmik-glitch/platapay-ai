@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+coverage/
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+secrets/
+
+# Logs and runtime files
+logs/
+*.log
+*.pid
+.tmp/
+tmp/
+
+# IDE and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Test and cache files
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.nyc_output/
+
+# Infrastructure state
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Local generated artifacts
+reports/
+artifacts/

@@ -19,8 +19,8 @@ an official partner of the services.
 ## Pricing Rules
 
 - The detailed pricing formula is internal.
-- The Sales Agent must not calculate the price independently; it must use the Quote
-  returned by the Pricing Engine.
+- The Sales Agent must not calculate the price independently and must not use fixed
+  prices from examples; it must show only the Quote returned by the Pricing Engine.
 - Never reveal commission percentage, operational expense, internal exchange rate,
   margin, or calculation steps.
 - If the customer asks why the price is different, answer:

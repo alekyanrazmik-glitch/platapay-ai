@@ -41,14 +41,17 @@ platapay-ai/
 ## Architectural Principles
 
 1. **Platform first**: channel adapters such as Telegram must depend on platform
-modules, not contain core logic. 2. **Domain isolation**: business rules belong in
-domain packages, not in bots, HTTP controllers, or provider adapters. 3. **Provider
-independence**: AI and payment-related integrations should be wrapped behind internal
-interfaces to avoid vendor lock-in. 4. **Security by design**: secrets, user data,
-payment-adjacent workflows, and AI tool permissions require explicit controls. 5.
-**Observability from day one**: production services should emit structured logs,
-metrics, traces, and audit events. 6. **Documented decisions**: important architecture
-choices are captured as ADRs before implementation details harden.
+   modules, not contain core logic.
+2. **Domain isolation**: business rules belong in domain packages, not in bots, HTTP
+   controllers, or provider adapters.
+3. **Provider independence**: AI and payment-related integrations should be wrapped
+   behind internal interfaces to avoid vendor lock-in.
+4. **Security by design**: secrets, user data, payment-adjacent workflows, and AI tool
+   permissions require explicit controls.
+5. **Observability from day one**: production services should emit structured logs,
+   metrics, traces, and audit events.
+6. **Documented decisions**: important architecture choices are captured as ADRs before
+   implementation details harden.
 
 
 ## Business Core
@@ -58,7 +61,15 @@ rules for the Sales Agent, Pricing Engine, order lifecycle, service catalog, cus
 communication, and operator handoff live in [`docs/product/`](docs/product/).
 
 These documents are intended to be the source of truth for future domain-layer
-contracts, AI orchestration prompts, and operational integrations such as Google Sheets.
+contracts, AI orchestration prompts, and operational integrations such as Google Sheets:
+
+- product rules live in [`docs/product/`](docs/product/);
+- Google Sheets schema lives in
+  [`docs/integrations/google-sheets/`](docs/integrations/google-sheets/);
+- Sales Agent prompts live in
+  [`packages/ai-orchestration/prompts/`](packages/ai-orchestration/prompts/);
+- domain contracts live in [`packages/domain/docs/`](packages/domain/docs/).
+
 The current repository still contains documentation and contracts only; it does not
 implement Telegram, external APIs, payment execution, or business logic.
 

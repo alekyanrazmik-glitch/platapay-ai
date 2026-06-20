@@ -44,6 +44,23 @@ platapay-ai/
 5. **Observability from day one**: production services should emit structured logs, metrics, traces, and audit events.
 6. **Documented decisions**: important architecture choices are captured as ADRs before implementation details harden.
 
+## Business Core
+
+The PlataPay AI OS business core describes the first agent (the Sales Agent) and
+its supporting contracts: product behavior, pricing policy, order lifecycle,
+service catalog, customer communication, operator handoff, the Google Sheets
+schema, the Sales Agent system prompt, and domain contracts. It is documentation
+and contracts only — no runtime code, bot, or payment integration.
+
+The business core is described in:
+
+```text
+docs/product/
+docs/integrations/google-sheets/schema.md
+packages/ai-orchestration/prompts/sales-agent-system.md
+packages/domain/docs/
+```
+
 ## Architecture Overview
 
 The high-level architecture is documented in [`docs/architecture/system-context.md`](docs/architecture/system-context.md). ADRs are stored in [`docs/adr/`](docs/adr/).

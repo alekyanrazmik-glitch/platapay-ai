@@ -64,7 +64,7 @@ AuditLog
 | plan                | string | yes      | Plus             |
 | currency            | string | yes      | USD              |
 | base_price          | number | yes      | 20               |
-| final_price         | number | yes      | 2850             |
+| final_price         | number | after quote | 2850          |
 | payment_method      | string | no       | payment link     |
 | payment_link        | string | no       | https://...      |
 | account_required    | boolean| yes      | false            |
@@ -73,6 +73,10 @@ AuditLog
 | risk_notes          | string | no       | none             |
 | created_at          | string | yes      | 2026-06-20 10:00 |
 | updated_at          | string | yes      | 2026-06-20 10:05 |
+
+> Orders may be created before pricing is available. final_price must be empty
+> for New/NeedInfo if Quote has not been calculated yet and becomes required
+> from Quoted onward.
 
 ## Knowledge
 

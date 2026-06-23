@@ -3,6 +3,20 @@
 This document fixes the internal pricing formula for PlataPay AI OS. It is an
 **internal** contract. The customer is shown **only the final price**.
 
+## Implementation Status
+
+The Pricing Engine is now **implemented** as the first PlataPay AI OS domain
+module (`packages/domain/src/pricing/`). The **business formula has not
+changed** — the engine implements exactly the formula below. Two operational
+clarifications now apply in code:
+
+- The final price is **rounded up to a whole rouble** (`Math.ceil`).
+- The customer response exposes **only** `customerVisible.finalCustomerPriceRub`
+  (in RUB); all internal calculations stay in the internal breakdown and are
+  never disclosed.
+
+See `../../packages/domain/docs/pricing-engine.md` for the implemented engine.
+
 ## Internal Formula
 
 ```text

@@ -67,13 +67,36 @@ The high-level architecture is documented in [`docs/architecture/system-context.
 
 ## Current Status
 
-This repository currently contains the project foundation only. Business logic, runtime services, AI workflows, and provider integrations have not yet been implemented.
+The project foundation is in place, and the **Pricing Engine is now implemented
+as the first domain module** (`packages/domain/src/pricing/`). It computes the
+final customer price from the internal PlataPay formula and returns a `Quote`.
+
+Key guarantees:
+
+- the final price is **rounded up to a whole rouble** (`Math.ceil`);
+- the customer is shown **only** `customerVisible.finalCustomerPriceRub` (RUB);
+- internal calculations (rate, subscription cost, commission, operational
+  expense) stay in the internal breakdown and are **never disclosed**;
+- the **business formula has not changed** — see
+  [`docs/product/pricing-policy.md`](docs/product/pricing-policy.md) and
+  [`packages/domain/docs/pricing-engine.md`](packages/domain/docs/pricing-engine.md).
+
+Runtime services, AI workflows, channel adapters, and provider integrations are
+still not implemented.
 
 ## Getting Started
 
-There is no runnable application yet. The recommended next steps are:
+The repository uses a minimal TypeScript stack (npm workspaces + Vitest).
 
-1. choose the initial runtime stack and package manager;
+```bash
+npm install
+npm test        # vitest run
+npm run typecheck
+```
+
+Recommended next steps:
+
+1. expand domain capabilities beyond pricing;
 2. define service boundaries and API contracts;
 3. add CI checks for formatting, linting, tests, and secret scanning;
 4. implement the first thin vertical slice through an API adapter, orchestration package, and domain capability.

@@ -52,4 +52,14 @@ describe("PricingEngine", () => {
     expect(visible).not.toHaveProperty("marketRate");
     expect(visible).not.toHaveProperty("internalSpread");
   });
+
+  it("Test 5 — throws on currency mismatch", () => {
+    expect(() =>
+      calculateQuote({
+        basePrice: 20,
+        currency: "USD",
+        exchangeRate: { currency: "EUR", marketRate: 95 },
+      }),
+    ).toThrow("Currency mismatch");
+  });
 });

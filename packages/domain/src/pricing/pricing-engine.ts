@@ -14,6 +14,12 @@ const DEFAULT_RULE: PricingRule = {
  * Internal breakdown values are not rounded.
  */
 export function calculateQuote(input: PricingInput, rule: PricingRule = DEFAULT_RULE): Quote {
+  if (input.currency !== input.exchangeRate.currency) {
+    throw new Error(
+      `Currency mismatch: pricing input currency ${input.currency} does not match exchange rate currency ${input.exchangeRate.currency}`,
+    );
+  }
+
   const internalRate = input.exchangeRate.marketRate + rule.internalSpread;
   const subscriptionCostRub = input.basePrice * internalRate;
   const commissionRub = Math.max(

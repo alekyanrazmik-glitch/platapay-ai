@@ -67,16 +67,44 @@ The high-level architecture is documented in [`docs/architecture/system-context.
 
 ## Current Status
 
-This repository currently contains the project foundation only. Business logic, runtime services, AI workflows, and provider integrations have not yet been implemented.
+### Pricing Engine (implemented)
+
+The first domain module — **Pricing Engine** — is implemented in
+`packages/domain/src/pricing/`. It computes the customer price in RUB using the
+internal PlataPay formula and returns a `Quote`.
+
+Key properties:
+
+- The final price is **rounded up** to the nearest whole ruble (`Math.ceil`).
+- The customer receives only `customerVisible.finalCustomerPriceRub`. Internal
+  breakdown fields (`internalRate`, `commissionRub`, `operationalExpenseRub`,
+  etc.) are never included in customer-facing output.
+- Covered by unit tests in `packages/domain/test/pricing-engine.test.ts`.
+
+See [`packages/domain/docs/pricing-engine.md`](packages/domain/docs/pricing-engine.md)
+and [`docs/product/pricing-policy.md`](docs/product/pricing-policy.md) for the
+formula and confidentiality rules.
+
+### Foundation
+
+All other business logic, runtime services, AI workflows, and provider integrations
+are not yet implemented.
 
 ## Getting Started
 
-There is no runnable application yet. The recommended next steps are:
+```bash
+cd packages/domain
+npm install
+npm test          # run Vitest unit tests
+npm run typecheck # TypeScript type checking
+```
 
-1. choose the initial runtime stack and package manager;
+The recommended next steps for the broader platform are:
+
+1. add CI checks for formatting, linting, tests, and secret scanning;
 2. define service boundaries and API contracts;
-3. add CI checks for formatting, linting, tests, and secret scanning;
-4. implement the first thin vertical slice through an API adapter, orchestration package, and domain capability.
+3. implement the first thin vertical slice through an API adapter, orchestration
+   package, and domain capability.
 
 ## Contributing
 

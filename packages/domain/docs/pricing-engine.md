@@ -1,48 +1,100 @@
-# Pricing Engine — Domain Contract
+# Pricing Engine — Domain Module
 
-The Pricing Engine computes the final price for a service and plan and returns a
-**Quote**. This is a domain contract, not runtime code. The authoritative
-formula lives in `../../../docs/product/pricing-policy.md`.
+The Pricing Engine is the first implemented domain module of PlataPay AI OS.
+It computes the final customer price in RUB and returns a **Quote**.
 
-## Inputs
-
-- `service_id`
-- `plan`
-- `currency`
-- `base_price` (service price in its currency)
-- `exchange_rate` (market rate to RUB for the currency)
+Source: `packages/domain/src/pricing/`
 
 ## Formula (Internal)
 
 ```text
-internal_rate     = exchange_rate + 10 ₽
-subscription_cost = base_price × internal_rate
-operational_cost  = 250 ₽
-commission        = max(0.30 × subscription_cost, 500 ₽)
-final_price       = subscription_cost + operational_cost + commission
+internalRate          = marketRate + internalSpread
+subscriptionCostRub   = basePrice × internalRate
+commissionRub         = max(subscriptionCostRub × commissionPercent / 100, minimumCommissionRub)
+finalCustomerPriceRub = subscriptionCostRub + operationalExpenseRub + commissionRub
 ```
 
-## Output — Quote
+## Default Rule Values
 
-The Pricing Engine returns a Quote containing only what the rest of the system
-needs:
+| Parameter             | Default |
+| --------------------- | ------- |
+| internalSpread        | 10 ₽    |
+| operationalExpenseRub | 250 ₽   |
+| commissionPercent     | 30%     |
+| minimumCommissionRub  | 500 ₽   |
 
-| field       | type   | customer-visible | description                  |
-| ----------- | ------ | ---------------- | ---------------------------- |
-| service_id  | string | no               | Service identifier           |
-| plan        | string | no               | Plan name                    |
-| currency    | string | no               | Service currency             |
-| base_price  | number | no               | Base price input             |
-| final_price | number | yes              | The only customer-facing value |
+## Rounding Rule
+
+`finalCustomerPriceRub` is ceiled to the nearest whole ruble:
+
+```ts
+finalCustomerPriceRub = Math.ceil(rawFinalPrice)
+```
+
+Internal breakdown values are not rounded.
+
+## Quote Output
+
+```ts
+interface CustomerVisible {
+  finalCustomerPriceRub: number; // the only value the customer ever sees
+  currency: "RUB";
+}
+
+interface Quote {
+  customerVisible: CustomerVisible;
+  pricingBreakdown: PricingBreakdown; // internal audit only — never send to customers
+}
+```
 
 ## Confidentiality Rules
 
-- The internal rate, subscription cost, operational cost, and commission are
-  **never** included in any customer-facing output.
-- Agents must use the `final_price` from the Quote and must not recompute or
-  reuse fixed prices from examples.
+- `customerVisible` contains **only** `finalCustomerPriceRub` and `currency`.
+- Internal fields (`internalRate`, `commissionRub`, `operationalExpenseRub`,
+  `subscriptionCostRub`) live in `pricingBreakdown` and must **never** be
+  sent to or shown to customers.
+- Agents must present only `customerVisible.finalCustomerPriceRub`.
 
-## Determinism
+## Usage
 
-Given the same `base_price` and `exchange_rate`, the Pricing Engine must produce
-the same `final_price`. The commission floor of 500 ₽ always applies.
+```ts
+import { calculateQuote } from "@platapay/domain";
+
+const quote = calculateQuote({
+  basePrice: 20,
+  currency: "USD",
+  exchangeRate: { currency: "USD", marketRate: 95 },
+});
+
+// Safe to send to customer:
+console.log(quote.customerVisible.finalCustomerPriceRub); // 2980
+```
+
+## Worked Examples
+
+### ChatGPT Plus (basePrice = 20 USD, marketRate = 95)
+
+```text
+internalRate        = 95 + 10 = 105
+subscriptionCostRub = 20 × 105 = 2100
+commissionRub       = max(2100 × 0.30, 500) = 630
+finalPrice          = 2100 + 250 + 630 = 2980 ₽
+```
+
+### Minimum Commission (basePrice = 2 USD, marketRate = 95)
+
+```text
+internalRate        = 105
+subscriptionCostRub = 2 × 105 = 210
+commissionRub       = max(210 × 0.30, 500) = 500  ← floor applied
+finalPrice          = 210 + 250 + 500 = 960 ₽
+```
+
+### Claude Max (basePrice = 100 USD, marketRate = 95)
+
+```text
+internalRate        = 105
+subscriptionCostRub = 100 × 105 = 10500
+commissionRub       = max(10500 × 0.30, 500) = 3150
+finalPrice          = 10500 + 250 + 3150 = 13900 ₽
+```
